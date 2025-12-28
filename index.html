@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibnu Septian | Desainer Grafis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https:/    /fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastel: {
+                            bg: '#fdfbf7', // Warm off-white
+                            surface: '#ffffff',
+                            primary: '#e3d5ca', // Muted beige/pink
+                            secondary: '#d6e2e9', // Soft blue grey
+                            accent: '#dbcdf0', // Muted lavender
+                            sage: '#cbd4c2', // Soft Sage
+                            text: '#4a4e69', // Muted dark purple/grey
+                            heading: '#22223b', // Darker navy/black
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #4a4e69;
+        }
+
+        /* Custom Utilities for Animation */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-delay-1 {
+            transition-delay: 100ms;
+        }
+
+        .stagger-delay-2 {
+            transition-delay: 200ms;
+        }
+
+        .stagger-delay-3 {
+            transition-delay: 300ms;
+        }
+
+        .glass-nav {
+            background: rgba(253, 251, 247, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Smooth scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #fdfbf7;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d6e2e9;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cbd4c2;
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden opacity-0 transition-opacity duration-700 ease-in-out" id="body-content">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#"
+                class="font-serif text-2xl font-semibold text-pastel-heading tracking-wide hover:opacity-70 transition-opacity">Ibnu
+                Septian.</a>
+
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#hero"
+                    class="text-pastel-text hover:text-pastel-heading transition-colors font-medium">Home</a>
+                <a href="#about"
+                    class="text-pastel-text hover:text-pastel-heading transition-colors font-medium">About</a>
+                <a href="#portfolio"
+                    class="text-pastel-text hover:text-pastel-heading transition-colors font-medium">Portfolio</a>
+                <a href="#skills"
+                    class="text-pastel-text hover:text-pastel-heading transition-colors font-medium">Skills</a>
+                <a href="#contact"
+                    class="px-5 py-2 bg-pastel-heading text-white rounded-full hover:bg-opacity-80 transition-all transform hover:scale-105 shadow-md">Let's
+                    Talk</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-pastel-heading focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-pastel-bg border-t border-pastel-secondary/30">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#hero"
+                    class="mobile-nav-link text-pastel-text hover:text-pastel-heading transition-colors font-medium py-2">Home</a>
+                <a href="#about"
+                    class="mobile-nav-link text-pastel-text hover:text-pastel-heading transition-colors font-medium py-2">About</a>
+                <a href="#portfolio"
+                    class="mobile-nav-link text-pastel-text hover:text-pastel-heading transition-colors font-medium py-2">Portfolio</a>
+                <a href="#skills"
+                    class="mobile-nav-link text-pastel-text hover:text-pastel-heading transition-colors font-medium py-2">Skills</a>
+                <a href="#contact"
+                    class="mobile-nav-link text-center px-5 py-3 bg-pastel-heading text-white rounded-full hover:bg-opacity-80 transition-all shadow-md">Let's
+                    Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <!-- Decor Blobs -->
+        <div
+            class="absolute top-20 left-10 w-64 h-64 bg-pastel-primary rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float">
+        </div>
+        <div class="absolute bottom-20 right-10 w-80 h-80 bg-pastel-sage rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float"
+            style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pastel-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"
+            style="animation-delay: 4s;"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h2
+                class="hero-anim text-lg md:text-xl text-pastel-text tracking-[0.2em] uppercase mb-4 opacity-0 translate-y-4">
+                Desainer Grafis</h2>
+            <h1
+                class="hero-anim font-serif text-6xl md:text-8xl lg:text-9xl text-pastel-heading mb-8 opacity-0 translate-y-8 leading-tight">
+                Menciptakan <br>
+                <span class="italic text-pastel-text opacity-80">Cerita Visual</span>
+            </h1>
+            <p
+                class="hero-anim text-pastel-text max-w-lg mx-auto text-lg leading-relaxed mb-10 opacity-0 translate-y-4">
+                Spesialis yang berfokus pada desain visual kreatif seperti logo, branding, media sosial, dan kebutuhan
+                cetak.
+            </p>
+            <div class="hero-anim opacity-0 translate-y-4">
+                <a href="#portfolio"
+                    class="group inline-flex items-center gap-2 border-b border-pastel-heading pb-1 text-pastel-heading hover:text-pastel-text hover:border-pastel-text transition-all">
+                    Lihat Portofolio
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 transform group-hover:translate-x-1 transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white/50 reveal-section">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2">
+                    <div class="relative">
+                        <div
+                            class="aspect-[4/5] bg-pastel-secondary rounded-2xl overflow-hidden relative shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-700">
+                            <!-- Profile Image -->
+                            <img src="profile.jpeg" alt="Foto Profil Ibnu Septian" class="w-full h-full object-cover">
+                        </div>
+                        <div
+                            class="absolute -bottom-6 -right-6 w-32 h-32 bg-pastel-primary rounded-full mix-blend-multiply filter blur-xl opacity-60">
+                        </div>
+                        <div
+                            class="absolute -top-6 -left-6 w-32 h-32 bg-pastel-sage rounded-full mix-blend-multiply filter blur-xl opacity-60">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <span class="text-pastel-heading font-medium tracking-widest text-sm uppercase mb-4 block">Tentang
+                        Saya</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-pastel-heading mb-8">Desain dengan Tujuan &
+                        Ketenangan.</h2>
+                    <p class="text-pastel-text leading-relaxed mb-6 font-light text-lg">
+                        Halo, saya Ibnu. Saya percaya bahwa desain yang baik harus bisa 'bernafas'. Di dunia yang penuh
+                        kebisingan, saya berusaha menciptakan pengalaman visual yang terasa membumi, elegan, dan
+                        bermakna.
+                    </p>
+                    <p class="text-pastel-text leading-relaxed mb-8 font-light text-lg">
+                        Dengan pengalaman lebih dari 5 tahun bekerja dengan berbagai merek gaya hidup, saya fokus
+                        menciptakan identitas yang berbicara lembut namun meninggalkan kesan mendalam. Pendekatan saya
+                        berakar pada kesederhanaan dan detail halus.
+                    </p>
+
+                    <div class="flex gap-4 max-sm:justify-center">
+                        <div class="text-center px-6 py-4 bg-pastel-bg rounded-xl border border-pastel-secondary/30">
+                            <span class="block font-serif text-3xl text-pastel-heading">5+</span>
+                            <span class="text-xs uppercase tracking-wider text-pastel-text">Tahun Pengalaman</span>
+                        </div>
+                        <div class="text-center px-6 py-4 bg-pastel-bg rounded-xl border border-pastel-secondary/30">
+                            <span class="block font-serif text-3xl text-pastel-heading">40+</span>
+                            <span class="text-xs uppercase tracking-wider text-pastel-text">Proyek</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 reveal-section">
+                <span
+                    class="text-pastel-heading font-medium tracking-widest text-sm uppercase mb-4 block">Portofolio</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-pastel-heading mb-6">Karya Pilihan</h2>
+                <p class="text-pastel-text max-w-3xl mx-auto text-lg font-light leading-relaxed">
+                    Desain visual kreatif seperti logo, branding, media sosial, dan kebutuhan cetak.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Branding Project -->
+                <div class="group reveal-section stagger-delay-1 cursor-pointer">
+                    <div class="relative overflow-hidden rounded-2xl shadow-sm aspect-[4/5] bg-gray-100 mb-6">
+                        <img src="portfolio_logo.png" alt="Proyek Logo & Branding"
+                            class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                class="bg-white/90 backdrop-blur-md px-6 py-3 rounded-full text-pastel-heading text-sm uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Lihat
+                                Detail</span>
+                        </div>
+                    </div>
+                    <h3
+                        class="font-serif text-2xl text-pastel-heading mb-1 group-hover:text-amber-700/60 transition-colors">
+                        Aura Studios</h3>
+                    <p class="text-pastel-text text-sm uppercase tracking-wider">Logo & Branding</p>
+                </div>
+
+                <!-- Social Media Project -->
+                <div class="group reveal-section stagger-delay-2 cursor-pointer">
+                    <div class="relative overflow-hidden rounded-2xl shadow-sm aspect-[4/5] bg-gray-100 mb-6">
+                        <img src="portfolio_social.png" alt="Social Media Creative"
+                            class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                class="bg-white/90 backdrop-blur-md px-6 py-3 rounded-full text-pastel-heading text-sm uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Lihat
+                                Detail</span>
+                        </div>
+                    </div>
+                    <h3
+                        class="font-serif text-2xl text-pastel-heading mb-1 group-hover:text-amber-700/60 transition-colors">
+                        Pastel Aesthetics</h3>
+                    <p class="text-pastel-text text-sm uppercase tracking-wider">Media Sosial</p>
+                </div>
+
+                <!-- Print Project -->
+                <div class="group reveal-section stagger-delay-3 cursor-pointer">
+                    <div class="relative overflow-hidden rounded-2xl shadow-sm aspect-[4/5] bg-gray-100 mb-6">
+                        <img src="portfolio_print.png" alt="Print Needs"
+                            class="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                        <div
+                            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                class="bg-white/90 backdrop-blur-md px-6 py-3 rounded-full text-pastel-heading text-sm uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Lihat
+                                Detail</span>
+                        </div>
+                    </div>
+                    <h3
+                        class="font-serif text-2xl text-pastel-heading mb-1 group-hover:text-amber-700/60 transition-colors">
+                        Exhibition Series</h3>
+                    <p class="text-pastel-text text-sm uppercase tracking-wider">Kebutuhan Cetak</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-pastel-primary/10 reveal-section">
+        <div class="container mx-auto px-6 text-center">
+            <span class="text-pastel-heading font-medium tracking-widest text-sm uppercase mb-4 block">Keahlian</span>
+            <h2 class="font-serif text-4xl md:text-5xl text-pastel-heading mb-12">Alat & Keterampilan</h2>
+
+            <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+                <span
+                    class="px-6 py-3 bg-white rounded-full text-pastel-heading shadow-sm hover:shadow-md transition-all cursor-default">Adobe
+                    Photoshop</span>
+                <span
+                    class="px-6 py-3 bg-white rounded-full text-pastel-heading shadow-sm hover:shadow-md transition-all cursor-default">Adobe
+                    Illustrator</span>
+                <span
+                    class="px-6 py-3 bg-white rounded-full text-pastel-heading shadow-sm hover:shadow-md transition-all cursor-default">InDesign</span>
+                <span
+                    class="px-6 py-3 bg-white rounded-full text-pastel-heading shadow-sm hover:shadow-md transition-all cursor-default">CorelDraw</span>
+                <span
+                    class="px-6 py-3 bg-white rounded-full text-pastel-heading shadow-sm hover:shadow-md transition-all cursor-default">Tipografi</span>
+                <span
+                    class="px-6 py-3 bg-white rounded-full text-pastel-heading shadow-sm hover:shadow-md transition-all cursor-default">Strategi
+                    Merek</span>
+                <span
+                    class="px-6 py-3 bg-white rounded-full text-pastel-heading shadow-sm hover:shadow-md transition-all cursor-default">Desain
+                    Cetak</span>
+                <span
+                    class="px-6 py-3 bg-white rounded-full text-pastel-heading shadow-sm hover:shadow-md transition-all cursor-default">Pengarahan
+                    Seni</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 reveal-section">
+        <div class="container mx-auto px-6">
+            <div class="bg-pastel-heading text-pastel-bg rounded-3xl p-10 md:p-20 text-center relative overflow-hidden">
+                <!-- Decor -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-pastel-accent rounded-full border-4 border-white/5 opacity-10 -translate-y-1/2 translate-x-1/2">
+                </div>
+
+                <h2 class="font-serif text-4xl md:text-6xl mb-6 relative z-10">Mari Ciptakan Sesuatu yang Indah.</h2>
+                <p class="text-pastel-bg/70 text-lg mb-10 max-w-lg mx-auto relative z-10">
+                    Terbuka untuk proyek lepas dan kolaborasi. Kirimkan pesan dan mari diskusikan visi Anda.
+                </p>
+                <a href="mailto:hello@elenarose.com"
+                    class="relative z-10 inline-block bg-pastel-bg text-pastel-heading px-10 py-4 rounded-full font-medium hover:bg-pastel-primary transition-colors duration-300">
+                    Hubungi Saya
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-pastel-text/10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="font-serif text-xl font-semibold text-pastel-heading">Ibnu Septian.</span>
+            <div class="flex space-x-6">
+                <a href="#" class="text-pastel-text hover:text-pastel-heading transition-colors">Instagram</a>
+                <a href="#" class="text-pastel-text hover:text-pastel-heading transition-colors">LinkedIn</a>
+            </div>
+            <p class="text-pastel-text text-sm">&copy; 2025 Ibnu Septian. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
